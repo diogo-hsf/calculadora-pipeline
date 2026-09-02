@@ -15,20 +15,20 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Cache de depend�ncias
+      - name: Cache de dependÃƒÂªncias
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: ${{ runner.os }}-pip-
 
-      - name: Instalar depend�ncias
+      - name: Instalar dependÃƒÂªncias
         run: pip install -r requirements.txt
 
-      - name: Executar testes unit�rios
+      - name: Executar testes unitÃƒÂ¡rios
         run: pytest tests/unit/ -n auto -m unit --tb=short --junitxml=report-unit.xml
 
-      - name: Publicar relat�rio
+      - name: Publicar relatÃƒÂ³rio
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -61,22 +61,22 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Cache de depend�ncias
+      - name: Cache de dependÃƒÂªncias
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: ${{ runner.os }}-pip-
 
-      - name: Instalar depend�ncias
+      - name: Instalar dependÃƒÂªncias
         run: pip install -r requirements.txt
 
-      - name: Executar testes de integra��o
+      - name: Executar testes de integraÃƒÂ§ÃƒÂ£o
         run: pytest tests/integration/ -m integration --tb=short --junitxml=report-integration.xml
         env:
           DATABASE_URL: postgresql://test:test@localhost/testdb
 
-      - name: Publicar relat�rio
+      - name: Publicar relatÃƒÂ³rio
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -95,15 +95,15 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Instalar depend�ncias
+      - name: Instalar dependÃƒÂªncias
         run: pip install -r requirements.txt
 
-      - name: Smoke test � verificar integridade do m�dulo
+      - name: Smoke test Ã¢â‚¬â€� verificar integridade do mÃƒÂ³dulo
         run: |
           python -c "
           from src.calculadora import calcular_desconto, calcular_imposto, calcular_preco_final
           assert calcular_desconto(100, 10) == 90.0
           assert calcular_imposto(100, 15) == 15.0
           assert calcular_preco_final(100, 10, 10) == 99.0
-          print('Smoke test passou � m�dulo operacional')
+          print('Smoke test passou Ã¢â‚¬â€� mÃƒÂ³dulo operacional')
           "
