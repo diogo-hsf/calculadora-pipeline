@@ -3,12 +3,10 @@ def calcular_desconto(preco: float, percentual: float) -> float:
         raise ValueError("Percentual deve estar entre 0 e 100")
     return round(preco * (1 - percentual / 100), 2)
 
-
 def calcular_imposto(preco: float, aliquota: float) -> float:
     if aliquota < 0:
         raise ValueError("Alíquota não pode ser negativa")
     return round(preco * (aliquota / 100), 2)
-
 
 def calcular_preco_final(
     preco_base: float, desconto: float, aliquota_imposto: float
