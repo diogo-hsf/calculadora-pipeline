@@ -1,7 +1,6 @@
 import pytest
 from src.calculadora import calcular_desconto, calcular_imposto, calcular_preco_final
 
-
 @pytest.mark.unit
 class TestCalcularDesconto:
     def test_desconto_normal(self):
@@ -21,7 +20,6 @@ class TestCalcularDesconto:
         with pytest.raises(ValueError):
             calcular_desconto(100.0, 110)
 
-
 @pytest.mark.unit
 class TestCalcularImposto:
     def test_imposto_normal(self):
@@ -33,7 +31,6 @@ class TestCalcularImposto:
     def test_aliquota_negativa(self):
         with pytest.raises(ValueError, match="negativa"):
             calcular_imposto(100.0, -1)
-
 
 @pytest.mark.unit
 class TestCalcularPrecoFinal:

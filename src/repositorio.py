@@ -9,14 +9,12 @@ def criar_tabela(conn):
         """)
     conn.commit()
 
-
 def salvar_preco(conn, produto: str, preco: float):
     with conn.cursor() as cur:
         cur.execute(
             "INSERT INTO precos (produto, preco) VALUES (%s, %s)", (produto, preco)
         )
     conn.commit()
-
 
 def buscar_preco(conn, produto: str) -> float | None:
     with conn.cursor() as cur:
